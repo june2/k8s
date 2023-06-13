@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: https://github.com/june2/k8s.git
     targetRevision: HEAD
-    path: charts/esc-server
+    path: argocd/charts/esc-server
 
   destination:
     server: https://kubernetes.default.svc
