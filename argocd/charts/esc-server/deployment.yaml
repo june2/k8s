@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: esc-server-deployment
+  namespace: ingress-basic
+spec:
+  revisionHistoryLimit: 1
+  replicas: 1
+  selector:
+    matchLabels:
+      app: esc-server
+  template:
+    metadata:
+      labels:
+        app: esc-server
+        tier: backend
+    spec:
+      containers:
+        - name: esc-server
+          image: esc-server
+          imagePullPolicy: Always
+          lifecycle:
+            preStop:
+              exec:
+                command: ["sleep", "60"]
+          ports:
+            - containerPort: 3001
+      terminationGracePeriodSeconds: 70

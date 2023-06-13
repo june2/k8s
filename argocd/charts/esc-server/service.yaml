@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: esc-server
+  namespace: ingress-basic
+  # annotations:
+  #   alb.ingress.kubernetes.io/healthcheck-path: /health-check.html
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: 3001
+      protocol: TCP
+  selector:
+    app: esc-server
