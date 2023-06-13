@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aks-helloworld-two # 이전 yaml 에는 one 이라고 되어 있는데 여기는 two 라고 되어 있습니다.
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aks-helloworld-two
+  template:
+    metadata:
+      labels:
+        app: aks-helloworld-two
+    spec:
+      containers:
+      - name: aks-helloworld-two
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1 # 이전 yaml과 동일한 도커 이미지입니다.
+        ports:
+        - containerPort: 80
+        env:
+        - name: TITLE
+          value: "AKS Ingress Demo" # TITLE 라는 환경변수에 세팅된 값입니다. 이전 yaml과 이곳의 내용이 다릅니다.
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aks-helloworld-two
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: aks-helloworld-two
