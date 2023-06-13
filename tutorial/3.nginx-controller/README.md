@@ -1,4 +1,8 @@
 ## 설치 
+
+- nginx ingress controller
+https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-helm/
+
 ```sh
 $ NAMESPACE=ingress-basic
 $ helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
