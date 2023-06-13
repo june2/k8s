@@ -1,28 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: esc-server-deployment
+  name: app-one-deployment
   namespace: ingress-basic
 spec:
   revisionHistoryLimit: 1
   replicas: 1
   selector:
     matchLabels:
-      app: esc-server
+      app: app-one
   template:
     metadata:
       labels:
-        app: esc-server
+        app: app-one
         tier: backend
     spec:
       containers:
-      - name: esc-server
-        image: esc-server
+      - name: app-one
+        image: app-one
+        args:
+        - "-text=apple"
         imagePullPolicy: Always
         lifecycle:
           preStop:
             exec:
               command: ["sleep", "60"]
         ports:
-        - containerPort: 3001
+        - containerPort: 5678
       terminationGracePeriodSeconds: 70

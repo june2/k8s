@@ -19,3 +19,10 @@ spec:
             name: esc-server # 이 정규식에 match가 되면 two 라는 pod로 연결해줍니다.
             port:
               number: 80
+      - path: /app-one/(.*) # 또 다른 정규식입니다. 
+        pathType: Prefix
+        backend:
+          service:
+            name: app-one # 이 정규식에 match가 되면 two 라는 pod로 연결해줍니다.
+            port:
+              number: 80

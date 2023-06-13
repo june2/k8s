@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: esc-server
+  name: app-one
   namespace: ingress-basic
   # annotations:
   #   alb.ingress.kubernetes.io/healthcheck-path: /health-check.html
@@ -10,7 +10,7 @@ spec:
   ports:
   - name: http
     port: 80
-    targetPort: 3001
+    targetPort: 5678
     protocol: TCP
   selector:
-    app: esc-server
+    app: app-one
