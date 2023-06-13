@@ -6,4 +6,4 @@ kind: Kustomization
 images:
 - name: esc-server
   newName: ddonggllee/esc-server
-  newTag: 1ced98
+  newTag: 20db7a
