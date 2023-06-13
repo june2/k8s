@@ -16,4 +16,5 @@ $ kubectl get ingress -n ingress-basic
 ```
 $ kubectl get pods -o wide --namespace ingress-basic
 $ kubectl get services -o wide --namespace ingress-basic
+$ kubectl describe ingress hello-world-ingress  --namespace ingress-basic
 ```

@@ -26,6 +26,13 @@ spec:
             name: aks-helloworld-two # 이 정규식에 match가 되면 two 라는 pod로 연결해줍니다.
             port:
               number: 80
+      - path: /(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: aks-helloworld-one
+            port:
+              number: 80
 # ---
 # apiVersion: networking.k8s.io/v1
 # kind: Ingress

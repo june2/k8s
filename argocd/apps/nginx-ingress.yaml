@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: esc-ingress # 이 ingress 서비스의 이름입니다.
+  namespace: ingress-basic
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /api/(.*) # 또 다른 정규식입니다. 
+        pathType: Prefix
+        backend:
+          service:
+            name: esc-server # 이 정규식에 match가 되면 two 라는 pod로 연결해줍니다.
+            port:
+              number: 80
